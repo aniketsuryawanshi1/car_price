@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+    <link rel="stylesheet" href="Style.css" >
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              clifford: "#da373d",
+            },
+          },
+        },
+      };
+    </script>
+    <title>Price Wheel</title>
+  </head>
+  <body class="bodyback">
+    <nav class="flex flex-row text-white my-4 items-center justify-between">
+      <div class="text-xl font-semibold text-white px-2">
+        <h1>Price Prediction</h1>
+      </div>
+      <ul class="flex flex-row gap-6 pr-20 items-center justify-start">
+        <a
+          href="#about"
+          class="text-xl font-semibold p-2 hover:bg-gray-900 hover:rounded-lg hover:p-2 text-white"
+          >How it works</a
+        >
+        <a
+          href="#cars"
+          class="text-xl font-semibold p-2 hover:bg-gray-900 hover:rounded-lg hover:p-2 text-white"
+          >Cars</a
+        >
+      </ul>
+    </nav>
+    <div id="home w-full">
+      <div
+        class="h-[80vh] w-full flex flex-col items-center justify-center homeimg"
+      >
+        <div class="">
+          <h1
+            class="flex items-center text-center text-8xl text-white font-bold"
+          >
+            Price
+            <p class="text-center font-[10]">Wheel</p>
+          </h1>
+          <p class="text-3xl font-semibold text-white">
+            Predicting Car Price with perfection !
+          </p>
+        </div>
+      </div>
+      <div class="flex flex-row items-center justify-center mt-2 gap-4">
+        <a
+          href="https://www.facebook.com"
+          target="_blank"
+          class="social-button bg-white rounded-full hover:bg-gray-400"
+          ><img
+            class="w-12 p-2"
+            src="https://img.icons8.com/ios/50/facebook-f.png"
+            alt="facebook-f"
+        /></a>
+        <a
+          href="https://www.twitter.com"
+          target="_blank"
+          class="social-button bg-white rounded-full hover:bg-gray-500"
+        >
+          <img
+            class="w-12 p-2"
+            src="https://img.icons8.com/ios/50/twitterx--v1.png"
+            alt="twitterx--v1"
+        /></a>
+        <a
+          href="https://www.instagram.com"
+          target="_blank"
+          class="social-button bg-white rounded-full hover:bg-gray-400"
+        >
+          <img
+            class="w-12 p-2"
+            src="https://img.icons8.com/ios/50/instagram-new--v1.png"
+            alt="instagram-new--v1"
+        /></a>
+      </div>
+    </div>
+    <div id="about" class="bg-about min-h-screen py-8 bg-black">
+     
+      <div class="card-container grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
+        <div class="card">
+          <img src="/src/Images/car2.png" alt="card img-1" />
+          <div class="car-content">
+            <h3>Card 1</h3>
+            <p>
+              Tell us about your car! Fill in details such as the car model,
+              mileage, number of previous owners, fuel type, and any other
+              relevant information.
+            </p>
+            <a href="" class="btn mt-4 inline-block">Read More</a>
+          </div>
+        </div>
+        <div class="card">
+          <img src="/src/Images/Bad-ass!!! - Contessa.jpeg" alt="card img-1" />
+          <div class="car-content">
+            <h3>Card 2</h3>
+            <p>
+              Our advanced algorithms process the information provided along
+              with extensive data on car models, market trends, and historical
+              pricing data.
+            </p>
+            <a href="" class="btn mt-4 inline-block">Read More</a>
+          </div>
+        </div>
+        <div class="card">
+          <img src="/src/Images/Car0.jpeg" alt="card img-1" class="w-full h-auto" />
+          <div class="car-content text-center p-4">
+            <h3 class="text-xl font-semibold mb-2">Card 3</h3>
+            <p class="mb-4">
+              Get instant access to the predicted price range for your car.
+              Whether you're buying, selling, or just curious, our prediction
+              tool simplifies the process for you.
+            </p>
+            <a href="" class="btn mt-4 mb-4 inline-block">Read More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="cars" class="bg-gray">
+      <form action="{{url_for('predict')}}" method="post" class="bg-gray-800 p-8 rounded-lg">
+        <div class="grid grid-cols-2 gap-4">
+
+         
+          <div class="flex flex-col">
+            <label for="Year" class="text-gray-300">Year:</label>
+            <input
+              type="text"
+              id="Year"
+              name="Year"
+              class="mt-1 px-3 py-2 rounded-md bg-gray-700 text-gray-200"
+            />
+          </div>
+          <div class="flex flex-col">
+            <label for="Present_Price" class="text-gray-300">Showroom Price (In lakhs):</label>
+            <input id="Present_Price" name="Present_Price" type="number" class="mt-1 px-3 py-2 rounded-md bg-gray-700 text-gray-200" required>
+          </div>
+          <div class="flex flex-col">
+            <label for="Kms_Driven" class="text-gray-300">K/M Driven:</label>
+            <input
+              type="text"
+              id="Kms_Driven"
+              name="Kms_Driven"
+              class="mt-1 px-3 py-2 rounded-md bg-gray-700 text-gray-200"
+            />
+          </div>
+          <div class="flex flex-col">
+            <label for="Owner" class="text-gray-300">Number of Previous Owners(0,1 or 2):</label>
+            <input type="number" id="Owner" name="Owner" class="mt-1 px-3 py-2 rounded-md bg-gray-700 text-gray-200" required>
+          </div>
+          <div class="flex flex-col">
+            <label for="fuelType" class="text-gray-300">Fuel Type:</label>
+            <select name="Fuel_Type_Petrol" id="Fuel_Type_Petrol" class="mt-1 px-3 py-2 rounded-md bg-gray-700 text-gray-200" required>
+              <option value="Petrol">Petrol</option>
+              <option value="Diesel">Diesel</option>
+              <option value="CNG">CNG</option>
+          </select>
+           
+          </div>
+          <div class="flex flex-col">
+            <label for="Seller_Type_Individual" class="text-gray-300">Are you a Dealer or Individual:</label>
+            <select name="Seller_Type_Individual" id="Seller_Type_Individual" class="mt-1 px-3 py-2 rounded-md bg-gray-700 text-gray-200" required>
+                <option value="Dealer">Dealer</option>
+                <option value="Individual">Individual</option>
+            </select>
+          </div>
+          <div class="flex flex-col">
+            <label for="Transmission_Mannual" class="text-gray-300"
+              >Transmission:</label>
+            <select name="Transmission_Mannual" id="Transmission_Mannual" class="mt-1 px-3 py-2 rounded-md bg-gray-700 text-gray-200">
+              <option value="Manual">Manual Car</option>
+              <option value="Automatic">Automatic Car</option>
+            </select>
+          </div>
+          
+
+          
+         
+
+        </div>
+        <div class="mt-4">
+          <button
+            type="submit"
+            class="px-4 py-2 bg-gray-600 text-gray-200 rounded-md hover:bg-gray-700"
+          >
+            calculate the selling Price
+          </button>
+        </div>
+       
+      </form>
+      <div id="result">{{prediction_text}}</div>
+    </div>
+  </body>
+</html>
